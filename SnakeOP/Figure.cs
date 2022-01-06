@@ -16,5 +16,27 @@ namespace SnakeOP
                 point.Draw();
             }
         }
+        public bool ISHit(Figure figure)
+        {
+            foreach(var point in pointList)
+            {
+                if (figure.IsHit(point))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public bool IsHit(Point point)
+        {
+            foreach(var p in pointList)
+            {
+                if (p.IsHit(point))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

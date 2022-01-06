@@ -50,5 +50,10 @@ namespace SnakeOP
             symb = ' ';
             Draw();
         }
+
+        public bool IsHit(Point p)
+        {
+            return p.x == x && p.y == y;
+        }
     }
 }

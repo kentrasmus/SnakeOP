@@ -39,5 +39,47 @@ namespace SnakeOP
             nextPoint.Move(1, direction);
             return nextPoint;
         }
+
+        public void HandletKeys(ConsoleKey key)
+        {
+            if(key == ConsoleKey.LeftArrow)
+            {
+                direction = Direction.LEFT;
+            }else if (key == ConsoleKey.RightArrow)
+            {
+                direction = Direction.RIGHT;
+            }else if(key == ConsoleKey.UpArrow)
+            {
+                direction = Direction.UP;
+            }else if(key == ConsoleKey.DownArrow)
+            {
+                direction = Direction.DOWN;
+            }
+        }
+        public bool Eat(Point food)
+        {
+            Point head = GetNextPoint();
+            if (head.IsHit(food))
+            {
+                food.symb = head.symb;
+                pointList.Add(food);
+                    return true;
+            }else
+            {
+                return false;
+            }
+        }
+        public bool IsHitTail()
+        {
+            Point head = pointList.Last();
+            for(int i = 0; i < pointList.Count - 2; i++)
+            {
+                if (head.IsHit(pointList[i]))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
